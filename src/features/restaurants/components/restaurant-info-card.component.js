@@ -55,9 +55,9 @@ export const RestaurantInfoCard = ({restaurant={}}) => {
         address="10 some random restaurant",
         isOpenNow=true,
         rating=4,
-        isCloseTemporarily=true,
+        isClosedTemporarily = true,
     }=restaurant;
-    const ratingArray = Array.from(new Array(rating));
+    const ratingArray = Array.from(new Array(Math.floor(rating)));
   return (
     <>
     <RestaurantCard elevation={5} >
@@ -72,7 +72,7 @@ export const RestaurantInfoCard = ({restaurant={}}) => {
      
       </Rating>
       <SectionEnd>
-        {isCloseTemporarily && 
+        {isClosedTemporarily  && 
         (<CloseTemp>
           CLOSED TEMPORARILY
         </CloseTemp>)}

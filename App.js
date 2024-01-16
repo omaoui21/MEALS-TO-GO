@@ -10,7 +10,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {restaurantsRequest} from './src/services/restaurants/restaurants.service';
-restaurantsRequest()
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
+
+
 const Tab = createBottomTabNavigator();
 function Setting() {
   return (
@@ -36,6 +38,7 @@ export default function App() {
   return (
     <>
     <ThemeProvider theme={theme}>
+    <RestaurantsContextProvider>
     <NavigationContainer>
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -60,6 +63,7 @@ export default function App() {
       <Tab.Screen name="Settings" component={Setting} />
     </Tab.Navigator>
     </NavigationContainer>
+    </RestaurantsContextProvider>
     <StatusBarExpo style="auto"/>
     </ThemeProvider>
     </>
